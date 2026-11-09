@@ -2,8 +2,7 @@
 #include <string>
 #include <cctype>
 using namespace std;
-//Cola dinamica-Punteros
-// Clase que representa cada nodo de la cola
+
 class NodoCola {
 public:
     int dato;
@@ -14,7 +13,6 @@ public:
     }
 };
 
-// Clase que maneja la Cola Dinámica (Orientada a Objetos)
 class ColaDinamica {
 private:
     NodoCola* frente;
@@ -25,7 +23,6 @@ public:
         final = nullptr;
     }
 
-    // Agregar elemento (Enqueue - Al final)
     void enqueue(int v) {
         NodoCola* nuevo = new NodoCola(v);
         if (final == nullptr) {
@@ -37,7 +34,6 @@ public:
         }
     }
 
-    // Eliminar elemento (Dequeue - Del frente)
     void dequeue() {
         if (frente != nullptr) {
             NodoCola* temp = frente;
@@ -52,7 +48,6 @@ public:
         }
     }
 
-    // Modificar / Editar el elemento del frente de la cola
     void modificar(int nuevoValor) {
         if (frente != nullptr) {
             frente->dato = nuevoValor;
@@ -62,7 +57,6 @@ public:
         }
     }
 
-    // Mostrar contenido de la cola
     void mostrar() {
         cout << "Contenido actual de la cola (Frente -> Final): ";
         NodoCola* actual = frente;
@@ -76,7 +70,6 @@ public:
         cout << "\n";
     }
 
-    // Verificar si está vacía
     bool estaVacia() {
         return frente == nullptr;
     }
@@ -89,7 +82,6 @@ int main() {
     string opcion;
 
     do {
-        // 1. Agregar elementos a elección del usuario
         cout << "\n--- GESTION DE COLA DINAMICA ---\n";
         cout << "Cuantos elementos deseas ingresar a la cola?: ";
         if (!(cin >> cantidad)) {
@@ -118,7 +110,6 @@ int main() {
         
         cola.mostrar();
 
-        // 2. Editar elementos a elección del usuario (Modificar el frente)
         if (!cola.estaVacia()) {
             cout << "Deseas editar el elemento del frente de la cola? (Si/No): ";
             cin >> opcion;
@@ -140,7 +131,6 @@ int main() {
             }
         }
 
-        // 3. Eliminar elementos a elección del usuario (Iterativo con do-while)
         do {
             if (cola.estaVacia()) break;
             cout << "Deseas eliminar un elemento (dequeue) de la cola? (Si/No): ";
@@ -155,7 +145,6 @@ int main() {
             }
         } while (opcion == "si" && !cola.estaVacia());
 
-        // 4. Decisión para continuar o terminar la ejecución
         cout << "Quieres continuar ejecutando el programa completo? (Si/No): ";
         cin >> continuar;
         for (size_t i = 0; i < continuar.length(); i++) {
