@@ -2,8 +2,7 @@
 #include <string>
 #include <cctype>
 using namespace std;
-//Lista Dinámica-punteros
-// Clase que representa cada nodo de la lista
+
 class NodoLista {
 public:
     int dato;
@@ -14,7 +13,6 @@ public:
     }
 };
 
-// Clase que maneja la Lista Dinámica (Orientada a Objetos)
 class ListaDinamica {
 private:
     NodoLista* cabeza;
@@ -23,7 +21,6 @@ public:
         cabeza = nullptr;
     }
 
-    // Insertar elemento al final de la lista
     void insertarFinal(int v) {
         NodoLista* nuevo = new NodoLista(v);
         if (cabeza == nullptr) {
@@ -37,7 +34,6 @@ public:
         }
     }
 
-    // Eliminar el primer elemento de la lista
     void eliminarInicio() {
         if (cabeza != nullptr) {
             NodoLista* temp = cabeza;
@@ -48,8 +44,6 @@ public:
             cout << "Lista vacia, no hay elementos para eliminar.\n";
         }
     }
-
-    // Editar / Modificar un elemento buscando su valor anterior
     bool modificar(int valorBuscar, int nuevoValor) {
         NodoLista* actual = cabeza;
         bool encontrado = false;
@@ -57,8 +51,6 @@ public:
             if (actual->dato == valorBuscar) {
                 actual->dato = nuevoValor;
                 encontrado = true;
-                // Si deseas que reemplace todas las ocurrencias, puedes quitar el break.
-                // Aquí reemplazará la primera coincidencia que encuentre.
                 break; 
             }
             actual = actual->siguiente;
@@ -66,7 +58,6 @@ public:
         return encontrado;
     }
 
-    // Mostrar contenido de la lista
     void mostrar() {
         cout << "Contenido actual de la lista: ";
         NodoLista* actual = cabeza;
@@ -80,7 +71,6 @@ public:
         cout << "\n";
     }
 
-    // Verificar si está vacía
     bool estaVacia() {
         return cabeza == nullptr;
     }
@@ -93,7 +83,6 @@ int main() {
     string opcion;
 
     do {
-        // 1. Agregar a elección del usuario
         cout << "\n--- GESTION DE LISTA DINAMICA ---\n";
         cout << "Cuantos elementos deseas ingresar a la lista dinamica?: ";
         if (!(cin >> cantidad)) {
@@ -122,7 +111,6 @@ int main() {
         
         lista.mostrar();
 
-        // 2. Editar a elección del usuario (Modificar un elemento existente)
         if (!lista.estaVacia()) {
             cout << "Deseas editar algun elemento de la lista? (Si/No): ";
             cin >> opcion;
@@ -145,8 +133,6 @@ int main() {
                 lista.mostrar();
             }
         }
-
-        // 3. Eliminar a elección del usuario (Iterativo con do-while)
         do {
             if (lista.estaVacia()) break;
             cout << "Deseas eliminar un elemento (del inicio) de la lista? (Si/No): ";
@@ -161,7 +147,6 @@ int main() {
             }
         } while (opcion == "si" && !lista.estaVacia());
 
-        // 4. Decisión para continuar o terminar la ejecución
         cout << "Quieres continuar ejecutando el programa completo? (Si/No): ";
         cin >> continuar;
         for (size_t i = 0; i < continuar.length(); i++) {
