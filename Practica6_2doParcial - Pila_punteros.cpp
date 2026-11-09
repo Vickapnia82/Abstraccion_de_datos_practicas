@@ -3,7 +3,6 @@
 #include <cctype>
 using namespace std;
 
-// Clase que representa cada nodo de la pila
 class NodoPila {
 public:
     int dato;
@@ -14,7 +13,6 @@ public:
     }
 };
 
-// Clase que maneja la Pila Dinámica (Orientada a Objetos)
 class PilaDinamica {
 private:
     NodoPila* tope;
@@ -23,14 +21,12 @@ public:
         tope = nullptr;
     }
 
-    // Agregar elemento (Push)
     void push(int v) {
         NodoPila* nuevo = new NodoPila(v);
         nuevo->siguiente = tope;
         tope = nuevo;
     }
 
-    // Eliminar elemento (Pop)
     void pop() {
         if (tope != nullptr) {
             NodoPila* temp = tope;
@@ -42,7 +38,6 @@ public:
         }
     }
 
-    // Modificar / Editar el elemento del tope
     void modificar(int nuevoValor) {
         if (tope != nullptr) {
             tope->dato = nuevoValor;
@@ -52,7 +47,6 @@ public:
         }
     }
 
-    // Mostrar contenido de la pila
     void mostrar() {
         cout << "Contenido actual de la pila (Tope -> Base): ";
         NodoPila* actual = tope;
@@ -66,7 +60,6 @@ public:
         cout << "\n";
     }
     
-    // Verificar si está vacía
     bool estaVacia() {
         return tope == nullptr;
     }
@@ -79,7 +72,6 @@ int main() {
     string opcion;
 
     do {
-        // 1. Agregar elementos a elección del usuario
         cout << "\n--- GESTION DE PILA DINAMICA ---\n";
         cout << "Cuantos elementos deseas ingresar a la pila?: ";
         if (!(cin >> cantidad)) {
@@ -108,7 +100,6 @@ int main() {
         
         pila.mostrar();
 
-        // 2. Editar elementos a elección del usuario (Modificar el tope)
         if (!pila.estaVacia()) {
             cout << "Deseas editar el elemento superior (tope) de la pila? (Si/No): ";
             cin >> opcion;
@@ -130,7 +121,6 @@ int main() {
             }
         }
 
-        // 3. Eliminar elementos a elección del usuario (Iterativo con do-while)
         do {
             if (pila.estaVacia()) break;
             cout << "Deseas eliminar un elemento (pop) de la pila? (Si/No): ";
@@ -145,7 +135,6 @@ int main() {
             }
         } while (opcion == "si" && !pila.estaVacia());
 
-        // 4. Decisión para continuar o terminar la ejecución
         cout << "Quieres continuar ejecutando el programa completo? (Si/No): ";
         cin >> continuar;
         for (size_t i = 0; i < continuar.length(); i++) {
